@@ -1,0 +1,25 @@
+class ABS(object):
+    def __init__(self):
+        self.check()
+
+    @classmethod
+    def check(cls):
+        if not cls.__name__ in (child.__name__ for child in ABS.__subclasses__()):
+            raise NotImplementedError
+
+class SubClass(ABS):
+    def __init__(self):
+        super().__init__()
+
+
+>>> x=SubClass()
+>>> x=ABS()
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    x=ABS()
+  File "C:/Python34/j.py", line 3, in __init__
+    self.check()
+  File "C:/Python34/j.py", line 8, in check
+    raise NotImplementedError
+NotImplementedError
+>>> 
